@@ -1,0 +1,31 @@
+#Criar a imagem dentro da pasta do projeto por favor
+docker build -t api-node .
+docker build -t api-node:v1 .
+
+
+# lista as imagens
+docker image ls
+
+
+# historico da imagem
+Docker image history api-node 
+
+#Rodar o container
+docker run -p 3000:3000 api-node
+docker run -p 3000:3000 -d api-node
+docker run -p 3000:3000 -d api-node:v1
+
+# testar a aplicação no navegador ou curl 
+curl http://localhost:3000
+
+
+# ver container em execução
+docker ps
+
+
+# para a container 
+docker stop id= 843dca472cea
+
+
+#ver os logs do container 
+docker logs e704a5b4ab27
