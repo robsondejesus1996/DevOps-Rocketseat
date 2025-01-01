@@ -29,3 +29,35 @@ docker stop id= 843dca472cea
 
 #ver os logs do container 
 docker logs e704a5b4ab27
+
+#lista de interfaces 
+docker network ls
+
+docker network create primeira-network
+docker network create --driver bridge primeira-network-bridge
+
+#atribuir uma rede a um container 
+docker network connect 22efc9dbace7 015911f841bf -- os id primeiro da network e o outro do container
+Ou 
+docker run --network=primeira-network -p 3001:3000 -d api-node:v1
+
+#verificar se o container está na rede o id é da network
+docker inspect 22efc9dbace7
+
+#verificar o container se tem a interface de rede
+docker container inspect 015911f841bf
+
+
+#volumes 
+
+#Entrar em modo interativo dentro do container 
+docker exec -it 6efe9314ef43 bash
+
+#verificar comandos volume
+docker volume
+
+docker volume create primeiro-volume
+docker volume inspect primeiro-volume
+
+
+docker run -v primeiro-volume:/src/app --network primeira-network -p 3001:3000 -d api-node:v1
